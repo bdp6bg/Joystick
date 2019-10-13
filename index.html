@@ -21,12 +21,35 @@
 			<div id="wrapper">
 			
 				<nav-ul>
-  					<button><a href="#">Home</a></button>
-  					<button><a href="#about">About Us</a></button>
- 					<button><a href="#signup">Signup Now</a></button>
-  					<button><a href="#login">Login</a></button>
-  					<button><a href="#contact">Contact Us</a></button>
+  					<button id="home_button" onclick="reload_home()">Home</button>
+  					<button id="about_button" onclick="reload_about()">About Us</button>
+ 					<button onclick="reload_signup()">Signup Now</button>
+  					<button onclick="reload_login()">Login</button>
+  					<button onclick="reload_contact()">Contact Us</button>
 				</nav-ul>
+				<script>
+					function reload_home()
+					{
+						location.href = "#";
+					}
+					function reload_about()
+					{	
+						location.href = "#about";
+					}
+					function reload_signup()
+					{
+						location.href = "#signup";
+					}
+					function reload_login()
+					{
+						location.href = "#login";
+					}
+					function reload_contact()
+					{
+						location.href = "#contact";
+					}
+				</script>
+
 			
 				<!-- Header -->
 					<header id="header">
