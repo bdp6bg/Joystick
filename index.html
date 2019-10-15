@@ -59,31 +59,31 @@
 						<!-- Signup -->
 							<article id="signup">
 								<h2 class="major">Signup</h2>
-								<form method="post" action="#">
+								<form method="post" action="#" id="sub" name="sub">
 									<div class="fields">
 										<div class="field half">
 											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be of the form: *@*.*')"/>
+											<input type="text" name="email" id="email"/> <!-- required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be of the form: *@*.*')"/>-->
 										</div>
 										<div class="field half">
 											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required/>
+											<input type="password" name="password" id="password"/> <!--  required/>-->
 										</div>
 										<div class="field">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')" />
+											<label for="name">Full Name</label>
+											<input type="text" name="name" id="name"/> <!--  required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')" />-->
 										</div>
 										<div class="field">
 											<label for="address">Street Address</label>
-											<input type="text" name="address" id="address" required pattern="^[a-zA-Z0-9\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No special characters allowed')"/>
+											<input type="text" name="address" id="address"/> <!--  required pattern="^[a-zA-Z0-9\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No special characters allowed')"/>-->
 										</div>
 										<div class="field third">
 											<label for="city">City</label>
-											<input type="text" name="city" id="city" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')"/>
+											<input type="text" name="city" id="city"/> <!--  required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')"/>-->
 										</div>
 										<div class="field third">
 										  <label for="state">State</label>
-										  <select name="state" id="state" required>
+										  <select name="state" id="state"> <!--  required>-->
 													<option value="" selected="">Select State</option>
 													<option value="AL">Alabama</option>
 													<option value="AK">Alaska</option>
@@ -140,7 +140,7 @@
 										</div>
 										<div class="field third">
 											<label for="zipcode">Zipcode</label>
-											<input type="text" name="zipcode" id="zipcode" required pattern="^[0-9][0-9][0-9][0-9][0-9]$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must contain exactly five numbers')"/>
+											<input type="text" name="zipcode" id="zipcode"/> <!--  required pattern="^[0-9][0-9][0-9][0-9][0-9]$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must contain exactly five numbers')"/>-->
 										</div>
 									</div>
 									<ul class="actions">
@@ -477,6 +477,72 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script>
+				$(document).ready(function() {
+				  $('#sub').submit(function(e) {
+				    var email = $('#email').val();
+				    var password = $('#password').val();
+						var name = $('#name').val();
+						var address = $('#address').val();
+						var city = $('#city').val();
+						var state = $('#state').val();
+						var zipcode = $('#zipcode').val();
+						var space = new RegExp("[\\s]");
+						$(".error").remove();
+						if (email.length < 1) {
+							$('#email').after('<span class="error" style="color:red">Please enter your email</span>');
+							e.preventDefault();
+						}
+						else if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+							$('#email').after('<span class="error" style="color:red">This is not a valid email</span>');
+							e.preventDefault();
+						}
+						if (password.length < 8 && password.length > 0) {
+							$('#password').after('<span class="error" style="color:red">Please use at least 8 characters</span>');
+							e.preventDefault();
+						}
+						if (password.length < 1) {
+							$('#password').after('<span class="error" style="color:red">Please enter your password</span>');
+							e.preventDefault();
+						}
+						if(name.length < 1) {
+							$('#name').after('<span class="error" style="color:red">Please enter your name</span>');
+							e.preventDefault();
+						}
+						if (!/^[a-zA-Z\s]*$/.test(name)){
+							$('#name').after('<span class="error" style="color:red">This is not a valid name</span>');
+							e.preventDefault();
+						}
+						if(address.length < 1){
+							$('#address').after('<span class="error" style="color:red">Please enter your address</span>');
+							e.preventDefault();
+						}
+						else if (!space.test(address)){
+							$('#address').after('<span class="error" style="color:red">This is not a valid address</span>');
+							e.preventDefault();
+						}
+						if(city.length < 1) {
+							$('#city').after('<span class="error" style="color:red">Please enter your city</span>');
+							e.preventDefault();
+						}
+						else if (!/^[a-zA-Z\s]*$/.test(city)){
+							$('#city').after('<span class="error" style="color:red">This is not a valid city</span>');
+							e.preventDefault();
+						}
+						if(zipcode.length < 1) {
+							$('#zipcode').after('<span class="error" style="color:red">Please enter your zip code</span>');
+							e.preventDefault();
+						}
+						else if(!/^[0-9]{5}(?:-[0-9]{4})?$/.test(zipcode)){
+							$('#zipcode').after('<span class="error" style="color:red">This is not a valid zip code</span>');
+							e.preventDefault();
+						}
+						if(state == ""){
+							$('#state').after('<span class="error" style="color:red">Please select a state</span>');
+							e.preventDefault();
+						}
+					});
+				 });
+			</script>
 	</body>
 </html>
