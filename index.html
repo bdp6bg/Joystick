@@ -21,12 +21,34 @@
 			<div id="wrapper">
 			
 				<nav-ul>
-  					<button><a href="#">Home</a></button>
-  					<button><a href="#about">About Us</a></button>
- 					<button><a href="#signup">Signup Now</a></button>
-  					<button><a href="#login">Login</a></button>
-  					<button><a href="#contact">Contact Us</a></button>
+  					<button id="home_button" onclick="reload_home()">Home</button>
+  					<button id="about_button" onclick="reload_about()">About Us</button>
+ 					<button onclick="reload_signup()">Signup Now</button>
+  					<button onclick="reload_login()">Login</button>
+  					<button onclick="reload_contact()">Contact Us</button>
 				</nav-ul>
+				<script>
+					function reload_home()
+					{
+						location.href = "#";
+					}
+					function reload_about()
+					{	
+						location.href = "#about";
+					}
+					function reload_signup()
+					{
+						location.href = "#signup";
+					}
+					function reload_login()
+					{
+						location.href = "#login";
+					}
+					function reload_contact()
+					{
+						location.href = "#contact";
+					}
+				</script>
 			
 				<!-- Header -->
 					<header id="header">
@@ -38,7 +60,8 @@
 							<div class="inner">
 								<h1>Joystick</h1>
 								<p>Premium quality stickers
-								<br>Why have a boring laptop when you could Joystick it?
+								<br>Supplied directly from artists
+								<br>New stock uploaded daily
 								<br>Joystick: De-borify your laptop</p>
 							</div>
 						</div>
@@ -176,11 +199,14 @@
 								<h2 class="major">About Us</h2>
 				
 								<p>Joystick is an online shopping center for premium stickers. We aim to give every individual the ability to showcase their passions however they want to and to give artists a platform to showcase their creations.</p>
-
-							 
+								
+								<p style="text-align:center;"><img src="images/logo.png" alt="Logo"></p>							 
 
 								<p>Our slogan "de-borify your laptop" is a call to arms, encouraging people to be unafraid to show what they are passionate about. We believe that everyone should be able to proudly display who they are and we want to be an outlet for that expression.</p>								
 								<p>Each sticker is designed by an independent artist working with Joystick. We display their designs, print the stickers, and deliver the final product to you. This means that you get a great looking sticker and support an artist pursuing their dream at the same time!</p>
+								
+								<p style="text-align:center;"><img src="images/stickers.jpg" alt="Stickers"></p>
+
 								<p>You will find that our vast collection of stickers can satisfy even the most peculiar of interests. Additionally, by working directly with artists, we can ensure that this collection continues to grow every day!</p>								
 								<p>Find the stickers that best suit you on Joystick!</p>
 								<button><a href="#signup">Signup Now</a></button>
@@ -494,11 +520,11 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							e.preventDefault();
 						}
 						else if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-							$('#email').after('<span class="error" style="color:red">This is not a valid email</span>');
+							$('#email').after('<span class="error" style="color:red">Must be of the form: *@*.*</span>');
 							e.preventDefault();
 						}
 						if (password.length < 8 && password.length > 0) {
-							$('#password').after('<span class="error" style="color:red">Please use at least 8 characters</span>');
+							$('#password').after('<span class="error" style="color:red">Must be 8 characters or more</span>');
 							e.preventDefault();
 						}
 						if (password.length < 1) {
@@ -510,7 +536,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							e.preventDefault();
 						}
 						if (!/^[a-zA-Z\s]*$/.test(name)){
-							$('#name').after('<span class="error" style="color:red">This is not a valid name</span>');
+							$('#name').after('<span class="error" style="color:red">No numbers or special characters allowed</span>');
 							e.preventDefault();
 						}
 						if(address.length < 1){
@@ -526,15 +552,15 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							e.preventDefault();
 						}
 						else if (!/^[a-zA-Z\s]*$/.test(city)){
-							$('#city').after('<span class="error" style="color:red">This is not a valid city</span>');
+							$('#city').after('<span class="error" style="color:red">No numbers or special characters allowed</span>');
 							e.preventDefault();
 						}
 						if(zipcode.length < 1) {
 							$('#zipcode').after('<span class="error" style="color:red">Please enter your zip code</span>');
 							e.preventDefault();
 						}
-						else if(!/^[0-9]{5}(?:-[0-9]{4})?$/.test(zipcode)){
-							$('#zipcode').after('<span class="error" style="color:red">This is not a valid zip code</span>');
+						else if(!/^[0-9][0-9][0-9][0-9][0-9]$/.test(zipcode)){
+							$('#zipcode').after('<span class="error" style="color:red">Must be exactly 5 numbers</span>');
 							e.preventDefault();
 						}
 						if(state == ""){
