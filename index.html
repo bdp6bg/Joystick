@@ -6,7 +6,7 @@
 -->
 
 <html>
-	
+
 	<head>
 		<title>Joystick</title>
 		<meta charset="utf-8" />
@@ -19,13 +19,12 @@
 
 		<!-- Wrapper -->
 			<div id="wrapper">
-			
+
 				<nav-ul>
   					<button id="home_button" onclick="reload_home()">Home</button>
   					<button id="about_button" onclick="reload_about()">About Us</button>
- 		  			<button onclick="reload_signup()">Signup Now</button>
+ 					<button onclick="reload_signup()">Signup Now</button>
   					<button onclick="reload_login()">Login</button>
-  					<button onclick="reload_shop()">Shop</button>
   					<button onclick="reload_contact()">Contact Us</button>
 				</nav-ul>
 				<script>
@@ -34,7 +33,7 @@
 						location.href = "#";
 					}
 					function reload_about()
-					{	
+					{
 						location.href = "#about";
 					}
 					function reload_signup()
@@ -49,12 +48,8 @@
 					{
 						location.href = "#contact";
 					}
-					function reload_shop()
-					{
-						location.href = "#shop";
-					}
 				</script>
-			
+
 				<!-- Header -->
 					<header id="header">
 						<div class="logo">
@@ -72,12 +67,11 @@
 						</div>
 						<nav>
 							<ul>
-							  <li><a href="#about">About</a></li>
 								<li><a href="#signup">Signup</a></li>
 								<li><a href="#login">Login</a></li>
-								<li><a href="#shop">Shop</a></li>
+								<li><a href="#about">About</a></li>
 								<li><a href="#contact">Contact</a></li>
-								<!-- <li><a href="#elements">Elements</a></li>-->
+								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
 						</nav>
 					</header>
@@ -104,11 +98,11 @@
 										</div>
 										<div class="field">
 											<label for="address">Street Address</label>
-											<input type="text" name="address" id="address" required pattern="^[a-zA-Z0-9\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No special characters allowed')"/> 
+											<input type="text" name="address" id="address" required pattern="^[a-zA-Z0-9\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No special characters allowed')"/>
 										</div>
 										<div class="field third">
 											<label for="city">City</label>
-											<input type="text" name="city" id="city" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')"/> 
+											<input type="text" name="city" id="city" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')"/>
 										</div>
 										<div class="field third">
 										  <label for="state">State</label>
@@ -298,17 +292,17 @@
 						<!-- About -->
 							<article id="about">
 								<h2 class="major">About Us</h2>
-				
-								<p>Joystick is an online shopping center for premium stickers. We aim to give every individual the ability to showcase their passions however they want to and to give artists a platform to showcase their creations.</p>
-								
-								<p style="text-align:center;"><img src="images/logo.png" alt="Logo"></p>							 
 
-								<p>Our slogan "de-borify your laptop" is a call to arms, encouraging people to be unafraid to show what they are passionate about. We believe that everyone should be able to proudly display who they are and we want to be an outlet for that expression.</p>								
+								<p>Joystick is an online shopping center for premium stickers. We aim to give every individual the ability to showcase their passions however they want to and to give artists a platform to showcase their creations.</p>
+
+								<p style="text-align:center;"><img src="images/logo.png" alt="Logo"></p>
+
+								<p>Our slogan "de-borify your laptop" is a call to arms, encouraging people to be unafraid to show what they are passionate about. We believe that everyone should be able to proudly display who they are and we want to be an outlet for that expression.</p>
 								<p>Each sticker is designed by an independent artist working with Joystick. We display their designs, print the stickers, and deliver the final product to you. This means that you get a great looking sticker and support an artist pursuing their dream at the same time!</p>
-								
+
 								<p style="text-align:center;"><img src="images/stickers.jpg" alt="Stickers"></p>
 
-								<p>You will find that our vast collection of stickers can satisfy even the most peculiar of interests. Additionally, by working directly with artists, we can ensure that this collection continues to grow every day!</p>								
+								<p>You will find that our vast collection of stickers can satisfy even the most peculiar of interests. Additionally, by working directly with artists, we can ensure that this collection continues to grow every day!</p>
 								<p>Find the stickers that best suit you on Joystick!</p>
 								<button><a href="#signup">Signup Now</a></button>
 							</article>
@@ -316,7 +310,7 @@
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact Us</h2>
-								<form method="post" action="#">
+								<form action="sendContactMessage.php" method="POST" >
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Name</label>
@@ -342,112 +336,6 @@
 									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 								</ul>
-							</article>
-							
-							<!-- Shop -->
-							<article id="shop">
-								<h2 class="major">Shop</h2>
-								<section>
-									<h3 class="major">Yay! You're going to De-Borify your laptop!</h3>
-									<p>This is where you can choose your sticker pack. We've put together some combos we think you're really going to enjoy! :)
-									<form method="post" action="#">
-									  <div>
-									  <ul class="actions">
-									    <h3 class="major">4-Packs</h3>
-											<li style="float:left"><input type="button" onClick="onLAX()" value="LAX Bro" /></li>
-											<li style="float:left"><input type="button" onClick="onVSCO()" value="VSCO Girl" /></li>
-											<li style="float:left"><input type="button" onClick="onr1()" value="Random!" /></li>
-										</ul>
-										</div>
-										<div>
-									  <ul class="actions">
-									    <h3 class="major">5-Packs</h3>
-											<li style="float:left"><input type="button" onClick="onBasic()" value="Basic AF" /></li>
-											<li style="float:left"><input type="button" onClick="onUVA()" value="Cartoons" /></li>
-											<li style="float:left"><input type="button" onClick="onr2()" value="Random!" /></li>
-										</ul>
-										</div>
-										<div class="fields">
-										  <div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="vsco2" name="vsco2">
-												<label for="vsco2"><img src="images/vsco2.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="basic1" name="basic1">
-												<label for="basic1"><img src="images/basic1.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="uva2" name="uva2">
-												<label for="uva2"><img src="images/uva2.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="lax3" name="lax3">
-												<label for="lax3"><img src="images/lax3.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="uva1" name="uva1">
-												<label for="uva1"><img src="images/uva1.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="basic2" name="basic2">
-												<label for="basic2"><img src="images/basic2.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="lax2" name="lax2">
-												<label for="lax2"><img src="images/lax2.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="uva3" name="uva3">
-												<label for="uva3"><img src="images/uva3.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="vsco1" name="vsco1">
-												<label for="vsco1"><img src="images/vsco1.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="basic3" name="basic3">
-												<label for="basic3"><img src="images/basic3.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="basic4" name="basic4">
-												<label for="basic4"><img src="images/basic4.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="uva4" name="uva4">
-												<label for="uva4"><img src="images/uva4.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="lax4" name="lax4">
-												<label for="lax4"><img src="images/lax4.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="basic5" name="basic5">
-												<label for="basic5"><img src="images/basic5.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="lax1" name="lax1">
-												<label for="lax1"><img src="images/lax1.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="vsco3" name="vsco3">
-												<label for="vsco3"><img src="images/vsco3.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="uva5" name="uva5">
-												<label for="uva5"><img src="images/uva5.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="vsco4" name="vsco4">
-												<label for="vsco4"><img src="images/vsco4.jpg" width="150" height="150"></label>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Buy Now" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
-
 							</article>
 
 						<!-- Elements -->
@@ -777,87 +665,5 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					});
 				 });
 			</script>
-			<script>
-        function onBasic(){
-          var list = document.getElementsByClassName("sticker");
-	        for(var i=0; i<list.length; i++){
-	          	list[i].checked = false;
-        	}
-	        document.getElementById("basic1").checked = true;
-	        document.getElementById("basic2").checked = true;
-	        document.getElementById("basic3").checked = true;
-	        document.getElementById("basic4").checked = true;
-	        document.getElementById("basic5").checked = true;
-        	checkboxes();
-        }
-     </script>
-     <script>
-        function onLAX(){
-          var list = document.getElementsByClassName("sticker");
-	        for(var i=0; i<list.length; i++){
-	          	list[i].checked = false;
-        	}
-	        document.getElementById("lax1").checked = true;
-	        document.getElementById("lax2").checked = true;
-	        document.getElementById("lax3").checked = true;
-	        document.getElementById("lax4").checked = true;
-        	checkboxes();
-        }
-     </script>
-     <script>
-        function onUVA(){
-          var list = document.getElementsByClassName("sticker");
-	        for(var i=0; i<list.length; i++){
-	          	list[i].checked = false;
-        	}
-	        document.getElementById("uva1").checked = true;
-	        document.getElementById("uva2").checked = true;
-	        document.getElementById("uva3").checked = true;
-	        document.getElementById("uva4").checked = true;
-	        document.getElementById("uva5").checked = true;
-        	checkboxes();
-        }
-     </script>
-     <script>
-        function onVSCO(){
-          var list = document.getElementsByClassName("sticker");
-	        for(var i=0; i<list.length; i++){
-	          	list[i].checked = false;
-        	}
-	        document.getElementById("vsco1").checked = true;
-	        document.getElementById("vsco2").checked = true;
-	        document.getElementById("vsco3").checked = true;
-	        document.getElementById("vsco4").checked = true;
-	        document.getElementById("vsco5").checked = true;
-        	checkboxes();
-        }
-     </script>
-     <script>
-        function onr1(){
-          var list = document.getElementsByClassName("sticker");
-	        for(var i=0; i<list.length; i++){
-	          	list[i].checked = false;
-        	}
-	        document.getElementById("basic1").checked = true;
-	        document.getElementById("vsco2").checked = true;
-	        document.getElementById("lax3").checked = true;
-	        document.getElementById("vsco4").checked = true;
-        	checkboxes();
-        }
-     </script>
-     <script>
-        function onr2(){
-          var list = document.getElementsByClassName("sticker");
-	        for(var i=0; i<list.length; i++){
-	          	list[i].checked = false;
-        	}
-	        document.getElementById("vsco1").checked = true;
-	        document.getElementById("lax2").checked = true;
-	        document.getElementById("uva3").checked = true;
-	        document.getElementById("vsco3").checked = true;
-	        document.getElementById("basic5").checked = true;
-        	checkboxes();
-        }
-     </script>
 	</body>
 </html>

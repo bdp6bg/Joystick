@@ -1,4 +1,8 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+
 $db_host = "ec2-184-72-221-140.compute-1.amazonaws.com";
 $db_port = "5432";
 $db_name = "d7m5scb5paud99";
@@ -27,6 +31,31 @@ if(pg_num_rows($exists) != 0){
 else{
 	$insert_query = "INSERT INTO public.\"siteUsers\" VALUES ('$name', '$email', '$address', '$city', '$state', '$zipcode', '$hashed_password')";
 	$result = pg_query($db_connection, $insert_query);
+
+	// confirmation email
+     $mail = new PHPMailer(true);
+     try {
+         //Server settings
+         $mail->isSMTP();
+         $mail->Host = 'smtp.gmail.com';
+         $mail->SMTPAuth = true;
+         $mail->Username = 'Joystickemail123@gmail.com';
+         $mail->Password = 'Password456!';
+         $mail->SMTPSecure = 'tls';
+         $mail->Port = 587;
+         $mail->setFrom('joystickemail123@gmail.com', 'Joystick Online Sticker Store');
+         $mail->addAddress($email);
+         $mail->isHTML(true);
+         $mail->Subject = 'Welcome to Joystick!';
+         $mail->Body = '<h2>Welcome to Joystick!</h2>
+                         <p>Thank you for creating a Joystick account. Enjoy shopping for our premium stickers and deborify your laptop.</p>';
+         $mail->AltBody = 'Welcome to Joystick!
+                         Thank you for creating a Joystick account! Enjoy shopping for our premium stickers and deborify your laptop.';
+         $mail->send();
+     } catch (Exception $e) {
+         echo 'Unable to send message. Mailer Error: ', $mail->ErrorInfo;
+     }
+
 	header("Location: /Joystick/index.html");
 	exit();
 }
