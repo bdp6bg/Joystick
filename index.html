@@ -23,8 +23,9 @@
 				<nav-ul>
   					<button id="home_button" onclick="reload_home()">Home</button>
   					<button id="about_button" onclick="reload_about()">About Us</button>
- 					<button onclick="reload_signup()">Signup Now</button>
+ 		  			<button onclick="reload_signup()">Signup Now</button>
   					<button onclick="reload_login()">Login</button>
+  					<button onclick="reload_shop()">Shop</button>
   					<button onclick="reload_contact()">Contact Us</button>
 				</nav-ul>
 				<script>
@@ -48,6 +49,10 @@
 					{
 						location.href = "#contact";
 					}
+					function reload_shop()
+					{
+						location.href = "#shop";
+					}
 				</script>
 			
 				<!-- Header -->
@@ -67,11 +72,12 @@
 						</div>
 						<nav>
 							<ul>
+							  <li><a href="#about">About</a></li>
 								<li><a href="#signup">Signup</a></li>
 								<li><a href="#login">Login</a></li>
-								<li><a href="#about">About</a></li>
+								<li><a href="#shop">Shop</a></li>
 								<li><a href="#contact">Contact</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
+								<!-- <li><a href="#elements">Elements</a></li>-->
 							</ul>
 						</nav>
 					</header>
@@ -336,6 +342,112 @@
 									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
 								</ul>
+							</article>
+							
+							<!-- Shop -->
+							<article id="shop">
+								<h2 class="major">Shop</h2>
+								<section>
+									<h3 class="major">Yay! You're going to De-Borify your laptop!</h3>
+									<p>This is where you can choose your sticker pack. We've put together some combos we think you're really going to enjoy! :)
+									<form method="post" action="#">
+									  <div>
+									  <ul class="actions">
+									    <h3 class="major">4-Packs</h3>
+											<li style="float:left"><input type="button" onClick="onLAX()" value="LAX Bro" /></li>
+											<li style="float:left"><input type="button" onClick="onVSCO()" value="VSCO Girl" /></li>
+											<li style="float:left"><input type="button" onClick="onr1()" value="Random!" /></li>
+										</ul>
+										</div>
+										<div>
+									  <ul class="actions">
+									    <h3 class="major">5-Packs</h3>
+											<li style="float:left"><input type="button" onClick="onBasic()" value="Basic AF" /></li>
+											<li style="float:left"><input type="button" onClick="onUVA()" value="Cartoons" /></li>
+											<li style="float:left"><input type="button" onClick="onr2()" value="Random!" /></li>
+										</ul>
+										</div>
+										<div class="fields">
+										  <div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco2" name="vsco2">
+												<label for="vsco2"><img src="images/vsco2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic1" name="basic1">
+												<label for="basic1"><img src="images/basic1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva2" name="uva2">
+												<label for="uva2"><img src="images/uva2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax3" name="lax3">
+												<label for="lax3"><img src="images/lax3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva1" name="uva1">
+												<label for="uva1"><img src="images/uva1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic2" name="basic2">
+												<label for="basic2"><img src="images/basic2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax2" name="lax2">
+												<label for="lax2"><img src="images/lax2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva3" name="uva3">
+												<label for="uva3"><img src="images/uva3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco1" name="vsco1">
+												<label for="vsco1"><img src="images/vsco1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic3" name="basic3">
+												<label for="basic3"><img src="images/basic3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic4" name="basic4">
+												<label for="basic4"><img src="images/basic4.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva4" name="uva4">
+												<label for="uva4"><img src="images/uva4.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax4" name="lax4">
+												<label for="lax4"><img src="images/lax4.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic5" name="basic5">
+												<label for="basic5"><img src="images/basic5.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax1" name="lax1">
+												<label for="lax1"><img src="images/lax1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco3" name="vsco3">
+												<label for="vsco3"><img src="images/vsco3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva5" name="uva5">
+												<label for="uva5"><img src="images/uva5.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco4" name="vsco4">
+												<label for="vsco4"><img src="images/vsco4.jpg" width="150" height="150"></label>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Buy Now" class="primary" /></li>
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</form>
+								</section>
+
 							</article>
 
 						<!-- Elements -->
@@ -665,5 +777,87 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					});
 				 });
 			</script>
+			<script>
+        function onBasic(){
+          var list = document.getElementsByClassName("sticker");
+	        for(var i=0; i<list.length; i++){
+	          	list[i].checked = false;
+        	}
+	        document.getElementById("basic1").checked = true;
+	        document.getElementById("basic2").checked = true;
+	        document.getElementById("basic3").checked = true;
+	        document.getElementById("basic4").checked = true;
+	        document.getElementById("basic5").checked = true;
+        	checkboxes();
+        }
+     </script>
+     <script>
+        function onLAX(){
+          var list = document.getElementsByClassName("sticker");
+	        for(var i=0; i<list.length; i++){
+	          	list[i].checked = false;
+        	}
+	        document.getElementById("lax1").checked = true;
+	        document.getElementById("lax2").checked = true;
+	        document.getElementById("lax3").checked = true;
+	        document.getElementById("lax4").checked = true;
+        	checkboxes();
+        }
+     </script>
+     <script>
+        function onUVA(){
+          var list = document.getElementsByClassName("sticker");
+	        for(var i=0; i<list.length; i++){
+	          	list[i].checked = false;
+        	}
+	        document.getElementById("uva1").checked = true;
+	        document.getElementById("uva2").checked = true;
+	        document.getElementById("uva3").checked = true;
+	        document.getElementById("uva4").checked = true;
+	        document.getElementById("uva5").checked = true;
+        	checkboxes();
+        }
+     </script>
+     <script>
+        function onVSCO(){
+          var list = document.getElementsByClassName("sticker");
+	        for(var i=0; i<list.length; i++){
+	          	list[i].checked = false;
+        	}
+	        document.getElementById("vsco1").checked = true;
+	        document.getElementById("vsco2").checked = true;
+	        document.getElementById("vsco3").checked = true;
+	        document.getElementById("vsco4").checked = true;
+	        document.getElementById("vsco5").checked = true;
+        	checkboxes();
+        }
+     </script>
+     <script>
+        function onr1(){
+          var list = document.getElementsByClassName("sticker");
+	        for(var i=0; i<list.length; i++){
+	          	list[i].checked = false;
+        	}
+	        document.getElementById("basic1").checked = true;
+	        document.getElementById("vsco2").checked = true;
+	        document.getElementById("lax3").checked = true;
+	        document.getElementById("vsco4").checked = true;
+        	checkboxes();
+        }
+     </script>
+     <script>
+        function onr2(){
+          var list = document.getElementsByClassName("sticker");
+	        for(var i=0; i<list.length; i++){
+	          	list[i].checked = false;
+        	}
+	        document.getElementById("vsco1").checked = true;
+	        document.getElementById("lax2").checked = true;
+	        document.getElementById("uva3").checked = true;
+	        document.getElementById("vsco3").checked = true;
+	        document.getElementById("basic5").checked = true;
+        	checkboxes();
+        }
+     </script>
 	</body>
 </html>
