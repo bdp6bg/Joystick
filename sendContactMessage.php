@@ -7,7 +7,7 @@ require 'vendor/autoload.php';
 $name = $_POST["name"];
 $email = $_POST["email"];
 $message = $_POST["message"];
-$url = "Location: /Joystick/index.html";
+$url = "Location: /Joystick/index.html#contact_success";
 $mail = new PHPMailer(true);
 
 try {
@@ -33,7 +33,7 @@ try {
     echo 'Unable to send message. Mailer Error: ', $mail->ErrorInfo;
 }
 
-header("Location: $url");
+header($url);
 
 //exit();
 ?>

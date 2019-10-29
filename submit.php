@@ -15,6 +15,10 @@ $city = $_POST['city'];
 $state = $_POST['state'];
 $zipcode = $_POST['zipcode'];
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 $select_query = "SELECT 1 FROM public.\"siteUsers\" WHERE email = '$email';";
@@ -27,7 +31,33 @@ if(pg_num_rows($exists) != 0){
 else{
 	$insert_query = "INSERT INTO public.\"siteUsers\" VALUES ('$name', '$email', '$address', '$city', '$state', '$zipcode', '$hashed_password')";
 	$result = pg_query($db_connection, $insert_query);
-	header("Location: /Joystick/index.html");
+
+	$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    $mail->SMTPDebug = 0;
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Username = 'joystickemail123@gmail.com';
+    $mail->Password = 'Password456!';
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+    //Recipients
+	$mail->setFrom('joystickemail123@gmail.com', 'Joystick');
+    $mail->addAddress($email);
+    //Content
+    $mail->isHTML(true);
+    $mail->Subject = 'Joystick Account Creation';
+    $mail->Body    = nl2br("Thank you for creating an account, find stickers to match your style today!");
+    $mail->send();
+} catch (Exception $e) {
+    echo 'Unable to send message. Mailer Error: ', $mail->ErrorInfo;
+}
+
+
+	header("Location: /Joystick/index.html#signup_success");
 	exit();
 }
 ?>
