@@ -27,7 +27,7 @@ if(pg_num_rows($exists) != 0){
 else{
 	$insert_query = "INSERT INTO public.\"siteUsers\" VALUES ('$name', '$email', '$address', '$city', '$state', '$zipcode', '$hashed_password')";
 	$result = pg_query($db_connection, $insert_query);
-	header("Location: /Joystick/index.html");
+	header("Location: /Joystick/index.html#signup_success");
 	exit();
 }
 ?>
