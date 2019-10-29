@@ -25,7 +25,7 @@ $select_query = "SELECT 1 FROM public.\"siteUsers\" WHERE email = '$email';";
 $exists = pg_query($db_connection, $select_query);
 
 if(pg_num_rows($exists) != 0){
-	header("Location: /Joystick/index.html#signup_return");
+	header("Location: #signup_return");
 	exit();
 }
 else{
@@ -57,7 +57,7 @@ try {
 }
 
 
-	header("Location: /Joystick/index.html#signup_success");
+	header("Location: #signup_success");
 	exit();
 }
 ?>

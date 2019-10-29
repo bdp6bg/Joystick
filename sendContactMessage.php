@@ -7,7 +7,7 @@ require 'vendor/autoload.php';
 $name = $_POST["name"];
 $email = $_POST["email"];
 $message = $_POST["message"];
-$url = "Location: /Joystick/index.html#contact_success";
+$url = "Location: #contact_success";
 $mail = new PHPMailer(true);
 
 try {

@@ -39,7 +39,7 @@ $postData = json_encode([
    'currency' => 'BTC',
    'price' => ($amount),
    'token' => '3twsth1x4d5KWJxf32xRUe8vhRtkefFjQcc3uDnY9cE9',
-   'redirectURL' => 'http://localhost/Joystick/index.html#store_success'
+   'redirectURL' => 'https://joystick-cs4753.herokuapp.com/#store_success'
    ]);
 
 $curlCli = curl_init($resourceUrl);
