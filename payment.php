@@ -42,18 +42,20 @@ $postData = json_encode([
    'redirectURL' => 'https://joystick-cs4753.herokuapp.com/#store_success'
    ]);
 
-$curlCli = curl_init($resourceUrl);
+   $ch = curl_init($resourceUrl);      
+   curl_setopt($ch, CURLOPT_HTTPHEADER, [
+	'x-accept-version: 2.0.0',
+	'Content-Type: application/json']);
 
-curl_setopt($curlCli, CURLOPT_HTTPHEADER, [
-   'x-accept-version: 2.0.0',
-   'Content-Type: application/json'
-]);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+	curl_setopt($ch, CURLOPT_POSTFIELDS, stripslashes($postData));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($ch); // execute
 
-curl_setopt($curlCli, CURLOPT_CUSTOMREQUEST, 'POST');
-curl_setopt($curlCli, CURLOPT_POSTFIELDS, stripslashes($postData));
+    $result_decoded = json_decode($result);
+	$returnURL = $result_decoded->data->url;
+	header("Location: $returnURL");	
 
-$result = curl_exec($curlCli);
-$resultData = json_decode($result);
-curl_close($curlCli);
+
 
 ?>
