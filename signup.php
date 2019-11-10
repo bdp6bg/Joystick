@@ -62,7 +62,7 @@ try {
 
 	$_SESSION["member"] = "yes";
 
-	header("Location: /#member.php");
+	header("Location: /member.php");
 	exit();
 }
 ?>
