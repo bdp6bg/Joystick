@@ -19,7 +19,7 @@ $hashed_password = pg_fetch_result($exists, 0, 0);
 
 if(password_verify($password, $hashed_password)){
 	$_SESSION["member"] = "yes";
-	header("Location: /#member.php");
+	header("Location: /member.php");
 	exit();
 }
 else{
