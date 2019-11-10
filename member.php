@@ -451,7 +451,7 @@
 							<article id="payment">
 								<h2 class="major"> Confirm Payment</h2>
 								<h3 id="amount">N/A</h3>
-								<form action="payment.php" method="POST">
+								<form action="payment-member.php" method="POST">
 										<div class="fields">
 											<div class="field">
 												<label for="name">Send Confirmation Email To</label>
