@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $db_host = "ec2-184-72-221-140.compute-1.amazonaws.com";
 $db_port = "5432";
 $db_name = "d7m5scb5paud99";
@@ -25,6 +27,8 @@ $select_query = "SELECT 1 FROM public.\"siteUsers\" WHERE email = '$email';";
 $exists = pg_query($db_connection, $select_query);
 
 if(pg_num_rows($exists) != 0){
+	$_SESSION["member"] = "no";
+
 	header("Location: /#signup_return");
 	exit();
 }
@@ -56,8 +60,9 @@ try {
     echo 'Unable to send message. Mailer Error: ', $mail->ErrorInfo;
 }
 
+	$_SESSION["member"] = "yes";
 
-	header("Location: /#signup_success");
+	header("Location: /#member.php");
 	exit();
 }
 ?>

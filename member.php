@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if(	$_SESSION["member"] != "yes"){
+		header("Location: /index.php#");
+		exit();
+	}
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Dimension by HTML5 UP
@@ -24,8 +32,7 @@
   					<button onclick="reload_home()">Home</button>
 					<button onclick="reload_store()">Shop Now</button>
   					<button onclick="reload_about()">About Us</button>
- 					<button onclick="reload_signup()">Signup Now</button>
-  					<button onclick="reload_login()">Login</button>
+  					<button onclick="reload_logout()">Logout</button>
   					<button onclick="reload_contact()">Contact Us</button>
 				</nav-ul>
 				<script>
@@ -41,13 +48,9 @@
 					{
 						location.href = "#store";
 					}
-					function reload_signup()
+					function reload_logout()
 					{
-						location.href = "#signup";
-					}
-					function reload_login()
-					{
-						location.href = "#login";
+						location.href = "#logout";
 					}
 					function reload_contact()
 					{
@@ -72,7 +75,7 @@
 						</div>
 						<div class="content">
 							<div class="inner">
-								<h1>Joystick</h1>
+								<h1>MEMBER PAGE</h1>
 								<p>Premium quality stickers
 								<br>Supplied directly from artists
 								<br>New stock uploaded daily
@@ -81,8 +84,7 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#signup">Signup</a></li>
-								<li><a href="#login">Login</a></li>
+								<li><a href="#logout">Logout</a></li>
 								<li><a href="#about">About</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
@@ -93,338 +95,17 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Signup -->
-							<article id="signup">
-								<h2 class="major">Signup</h2>
-
-								<form action="signup.php" method="POST">
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be of the form: *@*.*')"/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required pattern="^[a-zA-Z0-9]{7,15}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be alphanumerics only, between 7 and 15 characters')"/>
-										</div>
-										<div class="field">
-											<label for="name">Full Name</label>
-											<input type="text" name="name" id="name" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')" />
-										</div>
-										<div class="field">
-											<label for="address">Street Address</label>
-											<input type="text" name="address" id="address" required pattern="^[a-zA-Z0-9\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No special characters allowed')"/> 
-										</div>
-										<div class="field third">
-											<label for="city">City</label>
-											<input type="text" name="city" id="city" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')"/> 
-										</div>
-										<div class="field third">
-										  <label for="state">State</label>
-										  <select name="state" id="state" required>
-													<option value="" selected="">Select State</option>
-													<option value="AL">Alabama</option>
-													<option value="AK">Alaska</option>
-													<option value="AZ">Arizona</option>
-													<option value="AR">Arkansas</option>
-													<option value="CA">California</option>
-													<option value="CO">Colorado</option>
-													<option value="CT">Connecticut</option>
-													<option value="DE">Delaware</option>
-													<option value="DC">District Of Columbia</option>
-													<option value="FL">Florida</option>
-													<option value="GA">Georgia</option>
-													<option value="HI">Hawaii</option>
-													<option value="ID">Idaho</option>
-													<option value="IL">Illinois</option>
-													<option value="IN">Indiana</option>
-													<option value="IA">Iowa</option>
-													<option value="KS">Kansas</option>
-													<option value="KY">Kentucky</option>
-													<option value="LA">Louisiana</option>
-													<option value="ME">Maine</option>
-													<option value="MD">Maryland</option>
-													<option value="MA">Massachusetts</option>
-													<option value="MI">Michigan</option>
-													<option value="MN">Minnesota</option>
-													<option value="MS">Mississippi</option>
-													<option value="MO">Missouri</option>
-													<option value="MT">Montana</option>
-													<option value="NE">Nebraska</option>
-													<option value="NV">Nevada</option>
-													<option value="NH">New Hampshire</option>
-													<option value="NJ">New Jersey</option>
-													<option value="NM">New Mexico</option>
-													<option value="NY">New York</option>
-													<option value="NC">North Carolina</option>
-													<option value="ND">North Dakota</option>
-													<option value="OH">Ohio</option>
-													<option value="OK">Oklahoma</option>
-													<option value="OR">Oregon</option>
-													<option value="PA">Pennsylvania</option>
-													<option value="RI">Rhode Island</option>
-													<option value="SC">South Carolina</option>
-													<option value="SD">South Dakota</option>
-													<option value="TN">Tennessee</option>
-													<option value="TX">Texas</option>
-													<option value="UT">Utah</option>
-													<option value="VT">Vermont</option>
-													<option value="VA">Virginia</option>
-													<option value="WA">Washington</option>
-													<option value="WV">West Virginia</option>
-													<option value="WI">Wisconsin</option>
-													<option value="WY">Wyoming</option>
-												</select>
-										</div>
-										<div class="field third">
-											<label for="zipcode">Zipcode</label>
-											<input type="text" name="zipcode" id="zipcode" required pattern="^[0-9][0-9][0-9][0-9][0-9]$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must contain exactly five numbers')"/>
-										</div>
-									</div>
+							<!-- Logout -->
+							<article id="logout">
+								<h2 class="major">Logout?</h2>
+								<form action="logout.php" method="POST">
 									<ul class="actions">
-										<li><input type="submit" value="Create Account" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
+										<li><input type="submit" value="Yes" class="primary" /></li>
 									</ul>
 								</form>
 							</article>
 
-						<!-- Signup Return -->
-							<article id="signup_return">
-								<h2 class="major">Signup</h2>
-								<h3>Email is already registered</h3>
-								<h3>Log in or enter a different email</h3>
-
-								<form action="signup.php" method="POST" >
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be of the form: *@*.*')"/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required pattern="^[a-zA-Z0-9]{7,15}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be alphanumerics only, between 7 and 15 characters')"/>
-										</div>
-										<div class="field">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')" />
-										</div>
-										<div class="field">
-											<label for="address">Street Address</label>
-											<input type="text" name="address" id="address" required pattern="^[a-zA-Z0-9\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No special characters allowed')"/>
-										</div>
-										<div class="field third">
-											<label for="city">City</label>
-											<input type="text" name="city" id="city" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')"/>
-										</div>
-										<div class="field third">
-										  <label for="state">State</label>
-										  <select name="state" id="state" required>
-													<option value="" selected="">Select State</option>
-													<option value="AL">Alabama</option>
-													<option value="AK">Alaska</option>
-													<option value="AZ">Arizona</option>
-													<option value="AR">Arkansas</option>
-													<option value="CA">California</option>
-													<option value="CO">Colorado</option>
-													<option value="CT">Connecticut</option>
-													<option value="DE">Delaware</option>
-													<option value="DC">District Of Columbia</option>
-													<option value="FL">Florida</option>
-													<option value="GA">Georgia</option>
-													<option value="HI">Hawaii</option>
-													<option value="ID">Idaho</option>
-													<option value="IL">Illinois</option>
-													<option value="IN">Indiana</option>
-													<option value="IA">Iowa</option>
-													<option value="KS">Kansas</option>
-													<option value="KY">Kentucky</option>
-													<option value="LA">Louisiana</option>
-													<option value="ME">Maine</option>
-													<option value="MD">Maryland</option>
-													<option value="MA">Massachusetts</option>
-													<option value="MI">Michigan</option>
-													<option value="MN">Minnesota</option>
-													<option value="MS">Mississippi</option>
-													<option value="MO">Missouri</option>
-													<option value="MT">Montana</option>
-													<option value="NE">Nebraska</option>
-													<option value="NV">Nevada</option>
-													<option value="NH">New Hampshire</option>
-													<option value="NJ">New Jersey</option>
-													<option value="NM">New Mexico</option>
-													<option value="NY">New York</option>
-													<option value="NC">North Carolina</option>
-													<option value="ND">North Dakota</option>
-													<option value="OH">Ohio</option>
-													<option value="OK">Oklahoma</option>
-													<option value="OR">Oregon</option>
-													<option value="PA">Pennsylvania</option>
-													<option value="RI">Rhode Island</option>
-													<option value="SC">South Carolina</option>
-													<option value="SD">South Dakota</option>
-													<option value="TN">Tennessee</option>
-													<option value="TX">Texas</option>
-													<option value="UT">Utah</option>
-													<option value="VT">Vermont</option>
-													<option value="VA">Virginia</option>
-													<option value="WA">Washington</option>
-													<option value="WV">West Virginia</option>
-													<option value="WI">Wisconsin</option>
-													<option value="WY">Wyoming</option>
-												</select>
-										</div>
-										<div class="field third">
-											<label for="zipcode">Zipcode</label>
-											<input type="text" name="zipcode" id="zipcode" required pattern="^[0-9][0-9][0-9][0-9][0-9]$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must contain exactly five numbers')"/>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Create Account" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-							</article>
-
-							<!-- Signup Success -->
-							<article id="signup_success">
-								<h2 class="major">Signup</h2>
-								<h3>Account successfully created </h3>
-								<form action="signup.php" method="POST" >
-								
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be of the form: *@*.*')"/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required pattern="^[a-zA-Z0-9]{7,15}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be alphanumerics only, between 7 and 15 characters')"/>
-										</div>
-										<div class="field">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')" />
-										</div>
-										<div class="field">
-											<label for="address">Street Address</label>
-											<input type="text" name="address" id="address" required pattern="^[a-zA-Z0-9\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No special characters allowed')"/>
-										</div>
-										<div class="field third">
-											<label for="city">City</label>
-											<input type="text" name="city" id="city" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')"/>
-										</div>
-										<div class="field third">
-										  <label for="state">State</label>
-										  <select name="state" id="state" required>
-													<option value="" selected="">Select State</option>
-													<option value="AL">Alabama</option>
-													<option value="AK">Alaska</option>
-													<option value="AZ">Arizona</option>
-													<option value="AR">Arkansas</option>
-													<option value="CA">California</option>
-													<option value="CO">Colorado</option>
-													<option value="CT">Connecticut</option>
-													<option value="DE">Delaware</option>
-													<option value="DC">District Of Columbia</option>
-													<option value="FL">Florida</option>
-													<option value="GA">Georgia</option>
-													<option value="HI">Hawaii</option>
-													<option value="ID">Idaho</option>
-													<option value="IL">Illinois</option>
-													<option value="IN">Indiana</option>
-													<option value="IA">Iowa</option>
-													<option value="KS">Kansas</option>
-													<option value="KY">Kentucky</option>
-													<option value="LA">Louisiana</option>
-													<option value="ME">Maine</option>
-													<option value="MD">Maryland</option>
-													<option value="MA">Massachusetts</option>
-													<option value="MI">Michigan</option>
-													<option value="MN">Minnesota</option>
-													<option value="MS">Mississippi</option>
-													<option value="MO">Missouri</option>
-													<option value="MT">Montana</option>
-													<option value="NE">Nebraska</option>
-													<option value="NV">Nevada</option>
-													<option value="NH">New Hampshire</option>
-													<option value="NJ">New Jersey</option>
-													<option value="NM">New Mexico</option>
-													<option value="NY">New York</option>
-													<option value="NC">North Carolina</option>
-													<option value="ND">North Dakota</option>
-													<option value="OH">Ohio</option>
-													<option value="OK">Oklahoma</option>
-													<option value="OR">Oregon</option>
-													<option value="PA">Pennsylvania</option>
-													<option value="RI">Rhode Island</option>
-													<option value="SC">South Carolina</option>
-													<option value="SD">South Dakota</option>
-													<option value="TN">Tennessee</option>
-													<option value="TX">Texas</option>
-													<option value="UT">Utah</option>
-													<option value="VT">Vermont</option>
-													<option value="VA">Virginia</option>
-													<option value="WA">Washington</option>
-													<option value="WV">West Virginia</option>
-													<option value="WI">Wisconsin</option>
-													<option value="WY">Wyoming</option>
-												</select>
-										</div>
-										<div class="field third">
-											<label for="zipcode">Zipcode</label>
-											<input type="text" name="zipcode" id="zipcode" required pattern="^[0-9][0-9][0-9][0-9][0-9]$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must contain exactly five numbers')"/>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Create Account" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-							</article>
-
-						<!-- Login -->
-							<article id="login">
-								<h2 class="major">Login</h2>
-								<form action="login.php" method="POST">
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required/>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Login" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-							</article>
-
-						<!-- Login Return-->
-							<article id="login_return">
-								<h2 class="major">Login</h2>
-								<h3>Incorrect email and/or password
-								<form action="login.php" method="POST">
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required/>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Login" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-							</article>
-
-						<!-- About -->
+							<!-- About -->
 							<article id="about">
 								<h2 class="major">About Us</h2>
 				
