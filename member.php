@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if(	$_SESSION["member"] != "yes"){
-		header("Location: /index.php#");
+		header("Location: /#");
 		exit();
 	}
 ?>
