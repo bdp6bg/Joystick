@@ -53,15 +53,6 @@
 					{
 						location.href = "#contact";
 					}
-					function reload_payment(amount)
-					{
-						location.href = "#payment";
-						var element = document.getElementById("amount");
-						element.innerHTML = "Total Amount: " + amount + " BTC";
-						
-						element = document.getElementById("amount_input");
-						element.value = amount;
-					}
 				</script>
 			
 				<!-- Header -->
@@ -571,7 +562,7 @@
 									    <h3 class="major">4-Packs</h3>
 											<li style="float:left"><input type="button" onClick="onLAX()" value="LAX Bro" /></li>
 											<li style="float:left"><input type="button" onClick="onVSCO()" value="VSCO Girl" /></li>
-											<li style="float:left"><input type="button" onClick="reload_payment(0.001)" value="Buy Now (0.001 BTC)" /></li>
+											<li style="float:left"><input type="button" onClick="reload_signup()" value="Buy Now (0.001 BTC)" /></li>
 										</ul>
 										</div>
 										<div>
@@ -579,7 +570,7 @@
 									    <h3 class="major">5-Packs</h3>
 											<li style="float:left"><input type="button" onClick="onBasic()" value="Basic AF" /></li>
 											<li style="float:left"><input type="button" onClick="onUVA()" value="Cartoons" /></li>
-											<li style="float:left"><input type="button" onClick="reload_payment(0.002)" value="Buy Now (0.002 BTC)" /></li>
+											<li style="float:left"><input type="button" onClick="reload_signup()" value="Buy Now (0.002 BTC)" /></li>
 										</ul>
 										</div>
 										<div class="fields">
@@ -661,129 +652,6 @@
 										</ul>
 									</form>
 								</section>
-							</article>
-
-						<!-- Store Success-->
-							<article id="store_success">
-									<h2 class="major">Shop</h2>
-									<h3>Purchase sucessful, thank you!</h3>
-								<section>
-									<form method="post" action="#">
-									  <div>
-									  <ul class="actions">
-									    <h3 class="major">4-Packs</h3>
-											<li style="float:left"><input type="button" onClick="onLAX()" value="LAX Bro" /></li>
-											<li style="float:left"><input type="button" onClick="onVSCO()" value="VSCO Girl" /></li>
-											<li style="float:left"><input type="button" onClick="reload_payment(0.001)" value="Buy Now (0.001 BTC)" /></li>
-										</ul>
-										</div>
-										<div>
-									  <ul class="actions">
-									    <h3 class="major">5-Packs</h3>
-											<li style="float:left"><input type="button" onClick="onBasic()" value="Basic AF" /></li>
-											<li style="float:left"><input type="button" onClick="onUVA()" value="Cartoons" /></li>
-											<li style="float:left"><input type="button" onClick="reload_payment(0.002)" value="Buy Now (0.002 BTC)" /></li>
-										</ul>
-										</div>
-										<div class="fields">
-										  <div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="vsco2" name="vsco2">
-												<label for="vsco2"><img src="images/vsco2.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="basic1" name="basic1">
-												<label for="basic1"><img src="images/basic1.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="uva2" name="uva2">
-												<label for="uva2"><img src="images/uva2.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="lax3" name="lax3">
-												<label for="lax3"><img src="images/lax3.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="uva1" name="uva1">
-												<label for="uva1"><img src="images/uva1.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="basic2" name="basic2">
-												<label for="basic2"><img src="images/basic2.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="lax2" name="lax2">
-												<label for="lax2"><img src="images/lax2.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="uva3" name="uva3">
-												<label for="uva3"><img src="images/uva3.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="vsco1" name="vsco1">
-												<label for="vsco1"><img src="images/vsco1.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="basic3" name="basic3">
-												<label for="basic3"><img src="images/basic3.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="basic4" name="basic4">
-												<label for="basic4"><img src="images/basic4.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="uva4" name="uva4">
-												<label for="uva4"><img src="images/uva4.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="lax4" name="lax4">
-												<label for="lax4"><img src="images/lax4.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="basic5" name="basic5">
-												<label for="basic5"><img src="images/basic5.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="lax1" name="lax1">
-												<label for="lax1"><img src="images/lax1.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="vsco3" name="vsco3">
-												<label for="vsco3"><img src="images/vsco3.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="uva5" name="uva5">
-												<label for="uva5"><img src="images/uva5.jpg" width="150" height="150"></label>
-											</div>
-											<div class="field half">
-												<input class="sticker" type="checkbox" onclick="return false;" id="vsco4" name="vsco4">
-												<label for="vsco4"><img src="images/vsco4.jpg" width="150" height="150"></label>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
-							</article>
-
-						<!-- Payment -->
-							<article id="payment">
-								<h2 class="major"> Confirm Payment</h2>
-								<h3 id="amount">N/A</h3>
-								<form action="payment.php" method="POST">
-										<div class="fields">
-											<div class="field">
-												<label for="name">Send Confirmation Email To</label>
-												<input type="text" name="email" id="email" />
-											</div>
-											<input type="hidden" name="amount_input" id="amount_input"/>
-											
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Comfirm and Pay" class="primary" /></li>
-											<li><input type="reset" value="Reset"/></li>
-										</ul>
-								</form>
 							</article>
 
 						<!-- Elements -->
