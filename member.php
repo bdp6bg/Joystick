@@ -4,6 +4,12 @@
 		header("Location: /#signup");
 		exit();
 	}
+
+	$url = "https://www.bitstamp.net/api/ticker/";
+	$fgc = file_get_contents($url);
+	$json = json_decode($fgc, TRUE);
+	$lastPrice = $json["last"];
+	$date = date("m/d/Y   h:i:sa");
 ?>
 
 <!DOCTYPE HTML>
@@ -246,6 +252,18 @@
 							<article id="store">
 								<h2 class="major">Shop</h2>
 								<section>
+									<div id="container">
+										<table width="100%">
+										<tr>
+											<td rowspan="3" width="60%" id="lastPrice">
+											<?php echo "1 BTC = $", number_format($lastPrice, 2); ?>
+											</td>
+											<td align="bottom" colspan="2" id="dateTime">
+											<?php echo $date; ?>
+											</td>
+										</tr>
+										</table>
+									</div>
 									<form method="post" action="#">
 									  <div>
 									  <ul class="actions">
