@@ -367,6 +367,18 @@
 									<h2 class="major">Shop</h2>
 									<h3>Purchase sucessful, thank you!</h3>
 								<section>
+									<div id="container">
+										<table width="100%">
+										<tr>
+											<td rowspan="3" width="60%" id="lastPrice">
+											<?php echo "1 BTC = $", number_format($lastPrice, 2); ?>
+											</td>
+											<td align="bottom" colspan="2" id="dateTime">
+											<?php echo $date; ?>
+											</td>
+										</tr>
+										</table>
+									</div>
 									<form method="post" action="#">
 									  <div>
 									  <ul class="actions">
