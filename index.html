@@ -15,7 +15,6 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 
-
 	<body class="is-preload">
 
 		<!-- Wrapper -->
@@ -54,6 +53,15 @@
 					{
 						location.href = "#contact";
 					}
+					function reload_payment(amount)
+					{
+						location.href = "#payment";
+						var element = document.getElementById("amount");
+						element.innerHTML = "Total Amount: " + amount + " BTC";
+						
+						element = document.getElementById("amount_input");
+						element.value = amount;
+					}
 				</script>
 			
 				<!-- Header -->
@@ -88,8 +96,7 @@
 						<!-- Signup -->
 							<article id="signup">
 								<h2 class="major">Signup</h2>
-
-								<form action="signup.php" method="POST">
+								<form action="submit.php" method="POST">
 									<div class="fields">
 										<div class="field half">
 											<label for="email">Email</label>
@@ -183,10 +190,8 @@
 						<!-- Signup Return -->
 							<article id="signup_return">
 								<h2 class="major">Signup</h2>
-								<h3>Email is already registered</h3>
-								<h3>Log in or enter a different email</h3>
-
-								<form action="signup.php" method="POST" >
+								<form action="submit.php" method="POST" >
+								<p>Email is already registered. Sign in or enter a different email. </p>
 									<div class="fields">
 										<div class="field half">
 											<label for="email">Email</label>
@@ -280,9 +285,8 @@
 							<!-- Signup Success -->
 							<article id="signup_success">
 								<h2 class="major">Signup</h2>
-								<h3>Account successfully created </h3>
-								<form action="signup.php" method="POST" >
-								
+								<form action="submit.php" method="POST" >
+								<p>Account successfully created! </p>
 									<div class="fields">
 										<div class="field half">
 											<label for="email">Email</label>
@@ -376,33 +380,11 @@
 						<!-- Login -->
 							<article id="login">
 								<h2 class="major">Login</h2>
-								<form action="login.php" method="POST">
+								<form method="post" action="#">
 									<div class="fields">
 										<div class="field half">
 											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required/>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Login" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-							</article>
-
-						<!-- Login Return-->
-							<article id="login_return">
-								<h2 class="major">Login</h2>
-								<h3>Incorrect email and/or password
-								<form action="login.php" method="POST">
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required/>
+											<input type="text" name="email" id="email" required pattern="one" oninvalid="setCustomValidity('Email Format Here')"/>
 										</div>
 										<div class="field half">
 											<label for="password">Password</label>
@@ -468,7 +450,7 @@
 						 <!-- Contact Success-->
 							<article id="contact_success">
 								<h2 class="major">Contact Us</h2>
-								<h3>Feedback received, thank you for your comments!</h3>
+								<p>Feedback received, thank you for your comments!</p>
 								<form action="sendContactMessage.php" method="POST">
 									<div class="fields">
 										<div class="field half">
@@ -563,7 +545,7 @@
 									    <h3 class="major">4-Packs</h3>
 											<li style="float:left"><input type="button" onClick="onLAX()" value="LAX Bro" /></li>
 											<li style="float:left"><input type="button" onClick="onVSCO()" value="VSCO Girl" /></li>
-											<li style="float:left"><input type="button" onClick="reload_signup()" value="Buy Now (0.001 BTC)" /></li>
+											<li style="float:left"><input type="button" onClick="reload_payment(0.001)" value="Buy Now (0.001 BTC)" /></li>
 										</ul>
 										</div>
 										<div>
@@ -571,7 +553,7 @@
 									    <h3 class="major">5-Packs</h3>
 											<li style="float:left"><input type="button" onClick="onBasic()" value="Basic AF" /></li>
 											<li style="float:left"><input type="button" onClick="onUVA()" value="Cartoons" /></li>
-											<li style="float:left"><input type="button" onClick="reload_signup()" value="Buy Now (0.002 BTC)" /></li>
+											<li style="float:left"><input type="button" onClick="reload_payment(0.002)" value="Buy Now (0.002 BTC)" /></li>
 										</ul>
 										</div>
 										<div class="fields">
@@ -653,6 +635,129 @@
 										</ul>
 									</form>
 								</section>
+							</article>
+
+						<!-- Store Success-->
+							<article id="store_success">
+									<h2 class="major">Shop</h2>
+									<h3>Purchase sucessful, thank you!</h3>
+								<section>
+									<form method="post" action="#">
+									  <div>
+									  <ul class="actions">
+									    <h3 class="major">4-Packs</h3>
+											<li style="float:left"><input type="button" onClick="onLAX()" value="LAX Bro" /></li>
+											<li style="float:left"><input type="button" onClick="onVSCO()" value="VSCO Girl" /></li>
+											<li style="float:left"><input type="button" onClick="reload_payment(0.001)" value="Buy Now (0.001 BTC)" /></li>
+										</ul>
+										</div>
+										<div>
+									  <ul class="actions">
+									    <h3 class="major">5-Packs</h3>
+											<li style="float:left"><input type="button" onClick="onBasic()" value="Basic AF" /></li>
+											<li style="float:left"><input type="button" onClick="onUVA()" value="Cartoons" /></li>
+											<li style="float:left"><input type="button" onClick="reload_payment(0.002)" value="Buy Now (0.002 BTC)" /></li>
+										</ul>
+										</div>
+										<div class="fields">
+										  <div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco2" name="vsco2">
+												<label for="vsco2"><img src="images/vsco2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic1" name="basic1">
+												<label for="basic1"><img src="images/basic1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva2" name="uva2">
+												<label for="uva2"><img src="images/uva2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax3" name="lax3">
+												<label for="lax3"><img src="images/lax3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva1" name="uva1">
+												<label for="uva1"><img src="images/uva1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic2" name="basic2">
+												<label for="basic2"><img src="images/basic2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax2" name="lax2">
+												<label for="lax2"><img src="images/lax2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva3" name="uva3">
+												<label for="uva3"><img src="images/uva3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco1" name="vsco1">
+												<label for="vsco1"><img src="images/vsco1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic3" name="basic3">
+												<label for="basic3"><img src="images/basic3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic4" name="basic4">
+												<label for="basic4"><img src="images/basic4.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva4" name="uva4">
+												<label for="uva4"><img src="images/uva4.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax4" name="lax4">
+												<label for="lax4"><img src="images/lax4.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic5" name="basic5">
+												<label for="basic5"><img src="images/basic5.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax1" name="lax1">
+												<label for="lax1"><img src="images/lax1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco3" name="vsco3">
+												<label for="vsco3"><img src="images/vsco3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva5" name="uva5">
+												<label for="uva5"><img src="images/uva5.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco4" name="vsco4">
+												<label for="vsco4"><img src="images/vsco4.jpg" width="150" height="150"></label>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</form>
+								</section>
+							</article>
+
+						<!-- Payment -->
+							<article id="payment">
+								<h2 class="major"> Confirm Payment</h2>
+								<h3 id="amount">N/A</h3>
+								<form action="payment.php" method="POST">
+										<div class="fields">
+											<div class="field">
+												<label for="name">Send Confirmation Email To</label>
+												<input type="text" name="email" id="email" />
+											</div>
+											<input type="hidden" name="amount_input" id="amount_input"/>
+											
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Comfirm and Pay" class="primary" /></li>
+											<li><input type="reset" value="Reset"/></li>
+										</ul>
+								</form>
 							</article>
 
 						<!-- Elements -->
@@ -915,72 +1020,5 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script>
-				$(document).ready(function() {
-				  $('#sub').submit(function(e) {
-				    var email = $('#email').val();
-				    var password = $('#password').val();
-						var name = $('#name').val();
-						var address = $('#address').val();
-						var city = $('#city').val();
-						var state = $('#state').val();
-						var zipcode = $('#zipcode').val();
-						var space = new RegExp("[\\s]");
-						$(".error").remove();
-						if (email.length < 1) {
-							$('#email').after('<span class="error" style="color:red">Please enter your email</span>');
-							e.preventDefault();
-						}
-						else if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-							$('#email').after('<span class="error" style="color:red">Must be of the form: *@*.*</span>');
-							e.preventDefault();
-						}
-						if (password.length < 8 && password.length > 0) {
-							$('#password').after('<span class="error" style="color:red">Must be 8 characters or more</span>');
-							e.preventDefault();
-						}
-						if (password.length < 1) {
-							$('#password').after('<span class="error" style="color:red">Please enter your password</span>');
-							e.preventDefault();
-						}
-						if(name.length < 1) {
-							$('#name').after('<span class="error" style="color:red">Please enter your name</span>');
-							e.preventDefault();
-						}
-						if (!/^[a-zA-Z\s]*$/.test(name)){
-							$('#name').after('<span class="error" style="color:red">No numbers or special characters allowed</span>');
-							e.preventDefault();
-						}
-						if(address.length < 1){
-							$('#address').after('<span class="error" style="color:red">Please enter your address</span>');
-							e.preventDefault();
-						}
-						else if (!space.test(address)){
-							$('#address').after('<span class="error" style="color:red">This is not a valid address</span>');
-							e.preventDefault();
-						}
-						if(city.length < 1) {
-							$('#city').after('<span class="error" style="color:red">Please enter your city</span>');
-							e.preventDefault();
-						}
-						else if (!/^[a-zA-Z\s]*$/.test(city)){
-							$('#city').after('<span class="error" style="color:red">No numbers or special characters allowed</span>');
-							e.preventDefault();
-						}
-						if(zipcode.length < 1) {
-							$('#zipcode').after('<span class="error" style="color:red">Please enter your zip code</span>');
-							e.preventDefault();
-						}
-						else if(!/^[0-9][0-9][0-9][0-9][0-9]$/.test(zipcode)){
-							$('#zipcode').after('<span class="error" style="color:red">Must be exactly 5 numbers</span>');
-							e.preventDefault();
-						}
-						if(state == ""){
-							$('#state').after('<span class="error" style="color:red">Please select a state</span>');
-							e.preventDefault();
-						}
-					});
-				 });
-			</script>
 	</body>
 </html>

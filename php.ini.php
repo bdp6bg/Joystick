@@ -1,1 +1,1 @@
-file_uploads= On
+file_uploads = On
