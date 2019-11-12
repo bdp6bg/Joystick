@@ -37,6 +37,7 @@
 				<nav-ul>
   					<button onclick="reload_home()">Home</button>
 					<button onclick="reload_store()">Shop Now</button>
+					<button onclick="reload_upload()">Custom Upload</button>
   					<button onclick="reload_about()">About Us</button>
   					<button onclick="reload_logout()">Logout</button>
   					<button onclick="reload_contact()">Contact Us</button>
@@ -53,6 +54,10 @@
 					function reload_store()
 					{
 						location.href = "#store";
+					}
+					function reload_upload()
+					{
+						location.href = "#upload";
 					}
 					function reload_logout()
 					{
@@ -81,22 +86,12 @@
 						</div>
 						<div class="content">
 							<div class="inner">
-								<p>Stickers the way <i>you</i> want them, because <i>you</i> design them. Get ready for the coolest stickers you've ever seen!
-									<h3 class="major">Your Custom Sticker Experience Starts Now</h3>
-									<form action="upload.php" method="post" enctype="multipart/form-data">
-									  Select image to upload:
-									  <input type="file" name="fileToUpload" id="fileToUpload">
-									  <p> </p>
-									  <div class="field">
-																						<label for="demo-message">Notes?</label>
-																						<textarea name="demo-message" id="demo-message" placeholder="Let us know if there's anything specific we should do with your image." rows="6"></textarea>
-																					</div>
-																					<p> </p>
-										<ul class="actions">
-									  <li><input type="button" onClick="onUpload()" value="Upload Sticker Idea" name="upload1" class="primary"></li>
-									  <li><input type="reset" value="Reset"/></li>
-									  </ul>
-									</form>
+								<h1>JOYSTICK</h1>
+								<p>Premium quality stickers
+								<br>Supplied directly from artists
+								<br>New stock uploaded daily
+								<br>Joystick: De-borify your laptop
+								<br>(Member Home)</p>
 							</div>
 						</div>
 						<nav>
@@ -506,6 +501,105 @@
 											<li><input type="reset" value="Reset"/></li>
 										</ul>
 								</form>
+							</article>
+
+						<!-- Upload -->
+							<article id="upload">
+								<h2 class="major">Welcome, Members!</h2>
+
+								<section>
+									<h3 class="major">Your Custom Sticker Experience Starts Now</h3>
+
+									<p>Stickers the way <i>you</i> want them,
+									<br>Because <i>you</i> design them. 
+									<br>Get ready for the coolest stickers you've ever seen!</p>
+									<form action="upload.php" method="post" enctype="multipart/form-data">
+									  Select image to upload:
+									  <input type="file" name="fileToUpload" id="fileToUpload">
+									  <p> </p>
+									  <div class="field">
+																						<label for="demo-message">Notes?</label>
+																						<textarea name="demo-message" id="demo-message" placeholder="Let us know if there's anything specific we should do with your image." rows="6"></textarea>
+																					</div>
+																					<p> </p>
+										<ul class="actions">
+									  <li><input type="submit" value="Upload Sticker Idea"></li>
+									  <li><input type="reset" value="Reset"/></li>
+									  </ul>
+									</form>
+									</section>
+									<script>
+										function onUpload()
+										{
+											location.href = "#uploaded";
+										}
+									</script>
+							</article>
+
+							<!-- Upload Success -->
+							<article id="upload_success">
+								<section>
+									<h3 class="major">Your Custom Sticker Experience Starts Now</h3>
+									<h3>Sticker upload successfully</h3>
+									<p>Stickers the way <i>you</i> want them,
+									<br>Because <i>you</i> design them. 
+									<br>Get ready for the coolest stickers you've ever seen!</p>
+									<form action="upload.php" method="post" enctype="multipart/form-data">
+									  Select image to upload:
+									  <input type="file" name="fileToUpload" id="fileToUpload">
+									  <p> </p>
+									  <div class="field">
+																						<label for="demo-message">Notes?</label>
+																						<textarea name="demo-message" id="demo-message" placeholder="Let us know if there's anything specific we should do with your image." rows="6"></textarea>
+																					</div>
+																					<p> </p>
+										<ul class="actions">
+									  <li><input type="submit" value="Upload Sticker Idea"></li>
+									  <li><input type="reset" value="Reset"/></li>
+									  </ul>
+									</form>
+									</section>
+									<script>
+										function onUpload()
+										{
+											location.href = "#uploaded";
+										}
+									</script>
+							</article>
+
+							<!-- Upload Return -->
+							<article id="upload_return">
+								<section>
+									<h3 class="major">Your Custom Sticker Experience Starts Now</h3>
+									<h3>Sticker upload failed</h3>
+									<h3 class="major">Upload Requirements:</h3>
+									<h4>Uniquely named
+									<br>JPG, JPEG, PNG or GIF file type
+									<br>Under 500,000 bytes</h4>
+									<p>Stickers the way <i>you</i> want them,
+									<br>Because <i>you</i> design them. 
+									<br>Get ready for the coolest stickers you've ever seen!</p>
+									<form action="upload.php" method="post" enctype="multipart/form-data">
+									  Select image to upload:
+									  <input type="file" name="fileToUpload" id="fileToUpload">
+									  <p> </p>
+									  <div class="field">
+																						<label for="demo-message">Notes?</label>
+																						<textarea name="demo-message" id="demo-message" placeholder="Let us know if there's anything specific we should do with your image." rows="6"></textarea>
+																					</div>
+																					<p> </p>
+										<ul class="actions">
+									  <li><input type="submit" value="Upload Sticker Idea"></li>
+									  <li><input type="reset" value="Reset"/></li>
+									  </ul>
+									</form>
+									</section>
+									<script>
+										function onUpload()
+										{
+											location.href = "#uploaded";
+										}
+									</script>
 							</article>
 
 						<!-- Elements -->
