@@ -81,11 +81,22 @@
 						</div>
 						<div class="content">
 							<div class="inner">
-								<h1>MEMBER PAGE</h1>
-								<p>Premium quality stickers
-								<br>Supplied directly from artists
-								<br>New stock uploaded daily
-								<br>Joystick: De-borify your laptop</p>
+								<p>Stickers the way <i>you</i> want them, because <i>you</i> design them. Get ready for the coolest stickers you've ever seen!
+									<h3 class="major">Your Custom Sticker Experience Starts Now</h3>
+									<form action="upload.php" method="post" enctype="multipart/form-data">
+									  Select image to upload:
+									  <input type="file" name="fileToUpload" id="fileToUpload">
+									  <p> </p>
+									  <div class="field">
+																						<label for="demo-message">Notes?</label>
+																						<textarea name="demo-message" id="demo-message" placeholder="Let us know if there's anything specific we should do with your image." rows="6"></textarea>
+																					</div>
+																					<p> </p>
+										<ul class="actions">
+									  <li><input type="button" onClick="onUpload()" value="Upload Sticker Idea" name="upload1" class="primary"></li>
+									  <li><input type="reset" value="Reset"/></li>
+									  </ul>
+									</form>
 							</div>
 						</div>
 						<nav>
