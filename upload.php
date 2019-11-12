@@ -33,15 +33,15 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
-	header("Location: /#upload_return");
+	header("Location: /member.php#upload_return");
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-		header("Location: /#upload_success");
+		header("Location: /member.php#upload_success");
     } else {
         echo "Sorry, there was an error uploading your file.";
-		header("Location: /#upload_return");
+		header("Location: /member.php#upload_return");
     }
 }
 ?>

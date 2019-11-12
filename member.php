@@ -138,7 +138,7 @@
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact Us</h2>
-								<form action="sendContactMessage.php" method="POST">
+								<form action="sendContactMessage-member.php" method="POST">
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Name</label>
