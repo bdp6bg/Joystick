@@ -1,3 +1,17 @@
+<?php
+	session_start();
+	if(	$_SESSION["member"] != "yes"){
+		header("Location: /#signup");
+		exit();
+	}
+
+	$url = "https://www.bitstamp.net/api/ticker/";
+	$fgc = file_get_contents($url);
+	$json = json_decode($fgc, TRUE);
+	$lastPrice = $json["last"];
+	$date = date("m/d/Y   h:i:sa");
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Dimension by HTML5 UP
@@ -15,7 +29,6 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 
-
 	<body class="is-preload">
 
 		<!-- Wrapper -->
@@ -25,8 +38,7 @@
   					<button onclick="reload_home()">Home</button>
 					<button onclick="reload_store()">Shop Now</button>
   					<button onclick="reload_about()">About Us</button>
- 					<button onclick="reload_signup()">Signup Now</button>
-  					<button onclick="reload_login()">Login</button>
+  					<button onclick="reload_logout()">Logout</button>
   					<button onclick="reload_contact()">Contact Us</button>
 				</nav-ul>
 				<script>
@@ -42,17 +54,22 @@
 					{
 						location.href = "#store";
 					}
-					function reload_signup()
+					function reload_logout()
 					{
-						location.href = "#signup";
-					}
-					function reload_login()
-					{
-						location.href = "#login";
+						location.href = "#logout";
 					}
 					function reload_contact()
 					{
 						location.href = "#contact";
+					}
+					function reload_payment(amount)
+					{
+						location.href = "#payment";
+						var element = document.getElementById("amount");
+						element.innerHTML = "Total Amount: " + amount + " BTC";
+						
+						element = document.getElementById("amount_input");
+						element.value = amount;
 					}
 				</script>
 			
@@ -64,7 +81,7 @@
 						</div>
 						<div class="content">
 							<div class="inner">
-								<h1>Joystick</h1>
+								<h1>MEMBER PAGE</h1>
 								<p>Premium quality stickers
 								<br>Supplied directly from artists
 								<br>New stock uploaded daily
@@ -73,8 +90,7 @@
 						</div>
 						<nav>
 							<ul>
-								<li><a href="#signup">Signup</a></li>
-								<li><a href="#login">Login</a></li>
+								<li><a href="#logout">Logout</a></li>
 								<li><a href="#about">About</a></li>
 								<li><a href="#contact">Contact</a></li>
 								<!--<li><a href="#elements">Elements</a></li>-->
@@ -85,338 +101,17 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Signup -->
-							<article id="signup">
-								<h2 class="major">Signup</h2>
-
-								<form action="signup.php" method="POST">
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be of the form: *@*.*')"/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required pattern="^[a-zA-Z0-9]{7,15}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be alphanumerics only, between 7 and 15 characters')"/>
-										</div>
-										<div class="field">
-											<label for="name">Full Name</label>
-											<input type="text" name="name" id="name" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')" />
-										</div>
-										<div class="field">
-											<label for="address">Street Address</label>
-											<input type="text" name="address" id="address" required pattern="^[a-zA-Z0-9\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No special characters allowed')"/> 
-										</div>
-										<div class="field third">
-											<label for="city">City</label>
-											<input type="text" name="city" id="city" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')"/> 
-										</div>
-										<div class="field third">
-										  <label for="state">State</label>
-										  <select name="state" id="state" required>
-													<option value="" selected="">Select State</option>
-													<option value="AL">Alabama</option>
-													<option value="AK">Alaska</option>
-													<option value="AZ">Arizona</option>
-													<option value="AR">Arkansas</option>
-													<option value="CA">California</option>
-													<option value="CO">Colorado</option>
-													<option value="CT">Connecticut</option>
-													<option value="DE">Delaware</option>
-													<option value="DC">District Of Columbia</option>
-													<option value="FL">Florida</option>
-													<option value="GA">Georgia</option>
-													<option value="HI">Hawaii</option>
-													<option value="ID">Idaho</option>
-													<option value="IL">Illinois</option>
-													<option value="IN">Indiana</option>
-													<option value="IA">Iowa</option>
-													<option value="KS">Kansas</option>
-													<option value="KY">Kentucky</option>
-													<option value="LA">Louisiana</option>
-													<option value="ME">Maine</option>
-													<option value="MD">Maryland</option>
-													<option value="MA">Massachusetts</option>
-													<option value="MI">Michigan</option>
-													<option value="MN">Minnesota</option>
-													<option value="MS">Mississippi</option>
-													<option value="MO">Missouri</option>
-													<option value="MT">Montana</option>
-													<option value="NE">Nebraska</option>
-													<option value="NV">Nevada</option>
-													<option value="NH">New Hampshire</option>
-													<option value="NJ">New Jersey</option>
-													<option value="NM">New Mexico</option>
-													<option value="NY">New York</option>
-													<option value="NC">North Carolina</option>
-													<option value="ND">North Dakota</option>
-													<option value="OH">Ohio</option>
-													<option value="OK">Oklahoma</option>
-													<option value="OR">Oregon</option>
-													<option value="PA">Pennsylvania</option>
-													<option value="RI">Rhode Island</option>
-													<option value="SC">South Carolina</option>
-													<option value="SD">South Dakota</option>
-													<option value="TN">Tennessee</option>
-													<option value="TX">Texas</option>
-													<option value="UT">Utah</option>
-													<option value="VT">Vermont</option>
-													<option value="VA">Virginia</option>
-													<option value="WA">Washington</option>
-													<option value="WV">West Virginia</option>
-													<option value="WI">Wisconsin</option>
-													<option value="WY">Wyoming</option>
-												</select>
-										</div>
-										<div class="field third">
-											<label for="zipcode">Zipcode</label>
-											<input type="text" name="zipcode" id="zipcode" required pattern="^[0-9][0-9][0-9][0-9][0-9]$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must contain exactly five numbers')"/>
-										</div>
-									</div>
+							<!-- Logout -->
+							<article id="logout">
+								<h2 class="major">Logout?</h2>
+								<form action="logout.php" method="POST">
 									<ul class="actions">
-										<li><input type="submit" value="Create Account" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
+										<li><input type="submit" value="Yes" class="primary" /></li>
 									</ul>
 								</form>
 							</article>
 
-						<!-- Signup Return -->
-							<article id="signup_return">
-								<h2 class="major">Signup</h2>
-								<h3>Email is already registered</h3>
-								<h3>Log in or enter a different email</h3>
-
-								<form action="signup.php" method="POST" >
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be of the form: *@*.*')"/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required pattern="^[a-zA-Z0-9]{7,15}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be alphanumerics only, between 7 and 15 characters')"/>
-										</div>
-										<div class="field">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')" />
-										</div>
-										<div class="field">
-											<label for="address">Street Address</label>
-											<input type="text" name="address" id="address" required pattern="^[a-zA-Z0-9\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No special characters allowed')"/>
-										</div>
-										<div class="field third">
-											<label for="city">City</label>
-											<input type="text" name="city" id="city" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')"/>
-										</div>
-										<div class="field third">
-										  <label for="state">State</label>
-										  <select name="state" id="state" required>
-													<option value="" selected="">Select State</option>
-													<option value="AL">Alabama</option>
-													<option value="AK">Alaska</option>
-													<option value="AZ">Arizona</option>
-													<option value="AR">Arkansas</option>
-													<option value="CA">California</option>
-													<option value="CO">Colorado</option>
-													<option value="CT">Connecticut</option>
-													<option value="DE">Delaware</option>
-													<option value="DC">District Of Columbia</option>
-													<option value="FL">Florida</option>
-													<option value="GA">Georgia</option>
-													<option value="HI">Hawaii</option>
-													<option value="ID">Idaho</option>
-													<option value="IL">Illinois</option>
-													<option value="IN">Indiana</option>
-													<option value="IA">Iowa</option>
-													<option value="KS">Kansas</option>
-													<option value="KY">Kentucky</option>
-													<option value="LA">Louisiana</option>
-													<option value="ME">Maine</option>
-													<option value="MD">Maryland</option>
-													<option value="MA">Massachusetts</option>
-													<option value="MI">Michigan</option>
-													<option value="MN">Minnesota</option>
-													<option value="MS">Mississippi</option>
-													<option value="MO">Missouri</option>
-													<option value="MT">Montana</option>
-													<option value="NE">Nebraska</option>
-													<option value="NV">Nevada</option>
-													<option value="NH">New Hampshire</option>
-													<option value="NJ">New Jersey</option>
-													<option value="NM">New Mexico</option>
-													<option value="NY">New York</option>
-													<option value="NC">North Carolina</option>
-													<option value="ND">North Dakota</option>
-													<option value="OH">Ohio</option>
-													<option value="OK">Oklahoma</option>
-													<option value="OR">Oregon</option>
-													<option value="PA">Pennsylvania</option>
-													<option value="RI">Rhode Island</option>
-													<option value="SC">South Carolina</option>
-													<option value="SD">South Dakota</option>
-													<option value="TN">Tennessee</option>
-													<option value="TX">Texas</option>
-													<option value="UT">Utah</option>
-													<option value="VT">Vermont</option>
-													<option value="VA">Virginia</option>
-													<option value="WA">Washington</option>
-													<option value="WV">West Virginia</option>
-													<option value="WI">Wisconsin</option>
-													<option value="WY">Wyoming</option>
-												</select>
-										</div>
-										<div class="field third">
-											<label for="zipcode">Zipcode</label>
-											<input type="text" name="zipcode" id="zipcode" required pattern="^[0-9][0-9][0-9][0-9][0-9]$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must contain exactly five numbers')"/>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Create Account" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-							</article>
-
-							<!-- Signup Success -->
-							<article id="signup_success">
-								<h2 class="major">Signup</h2>
-								<h3>Account successfully created </h3>
-								<form action="signup.php" method="POST" >
-								
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be of the form: *@*.*')"/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required pattern="^[a-zA-Z0-9]{7,15}$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must be alphanumerics only, between 7 and 15 characters')"/>
-										</div>
-										<div class="field">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')" />
-										</div>
-										<div class="field">
-											<label for="address">Street Address</label>
-											<input type="text" name="address" id="address" required pattern="^[a-zA-Z0-9\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No special characters allowed')"/>
-										</div>
-										<div class="field third">
-											<label for="city">City</label>
-											<input type="text" name="city" id="city" required pattern="^[a-zA-Z\s]*$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('No numbers or special characters allowed')"/>
-										</div>
-										<div class="field third">
-										  <label for="state">State</label>
-										  <select name="state" id="state" required>
-													<option value="" selected="">Select State</option>
-													<option value="AL">Alabama</option>
-													<option value="AK">Alaska</option>
-													<option value="AZ">Arizona</option>
-													<option value="AR">Arkansas</option>
-													<option value="CA">California</option>
-													<option value="CO">Colorado</option>
-													<option value="CT">Connecticut</option>
-													<option value="DE">Delaware</option>
-													<option value="DC">District Of Columbia</option>
-													<option value="FL">Florida</option>
-													<option value="GA">Georgia</option>
-													<option value="HI">Hawaii</option>
-													<option value="ID">Idaho</option>
-													<option value="IL">Illinois</option>
-													<option value="IN">Indiana</option>
-													<option value="IA">Iowa</option>
-													<option value="KS">Kansas</option>
-													<option value="KY">Kentucky</option>
-													<option value="LA">Louisiana</option>
-													<option value="ME">Maine</option>
-													<option value="MD">Maryland</option>
-													<option value="MA">Massachusetts</option>
-													<option value="MI">Michigan</option>
-													<option value="MN">Minnesota</option>
-													<option value="MS">Mississippi</option>
-													<option value="MO">Missouri</option>
-													<option value="MT">Montana</option>
-													<option value="NE">Nebraska</option>
-													<option value="NV">Nevada</option>
-													<option value="NH">New Hampshire</option>
-													<option value="NJ">New Jersey</option>
-													<option value="NM">New Mexico</option>
-													<option value="NY">New York</option>
-													<option value="NC">North Carolina</option>
-													<option value="ND">North Dakota</option>
-													<option value="OH">Ohio</option>
-													<option value="OK">Oklahoma</option>
-													<option value="OR">Oregon</option>
-													<option value="PA">Pennsylvania</option>
-													<option value="RI">Rhode Island</option>
-													<option value="SC">South Carolina</option>
-													<option value="SD">South Dakota</option>
-													<option value="TN">Tennessee</option>
-													<option value="TX">Texas</option>
-													<option value="UT">Utah</option>
-													<option value="VT">Vermont</option>
-													<option value="VA">Virginia</option>
-													<option value="WA">Washington</option>
-													<option value="WV">West Virginia</option>
-													<option value="WI">Wisconsin</option>
-													<option value="WY">Wyoming</option>
-												</select>
-										</div>
-										<div class="field third">
-											<label for="zipcode">Zipcode</label>
-											<input type="text" name="zipcode" id="zipcode" required pattern="^[0-9][0-9][0-9][0-9][0-9]$" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Must contain exactly five numbers')"/>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Create Account" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-							</article>
-
-						<!-- Login -->
-							<article id="login">
-								<h2 class="major">Login</h2>
-								<form action="login.php" method="POST">
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required/>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Login" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-							</article>
-
-						<!-- Login Return-->
-							<article id="login_return">
-								<h2 class="major">Login</h2>
-								<h3>Incorrect email and/or password
-								<form action="login.php" method="POST">
-									<div class="fields">
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" required/>
-										</div>
-										<div class="field half">
-											<label for="password">Password</label>
-											<input type="password" name="password" id="password" required/>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Login" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-							</article>
-
-						<!-- About -->
+							<!-- About -->
 							<article id="about">
 								<h2 class="major">About Us</h2>
 				
@@ -557,13 +252,25 @@
 							<article id="store">
 								<h2 class="major">Shop</h2>
 								<section>
+									<div id="container">
+										<table width="100%">
+										<tr>
+											<td rowspan="3" width="60%" id="lastPrice">
+											<?php echo "1 BTC = $", number_format($lastPrice, 2); ?>
+											</td>
+											<td align="bottom" colspan="2" id="dateTime">
+											<?php echo $date; ?>
+											</td>
+										</tr>
+										</table>
+									</div>
 									<form method="post" action="#">
 									  <div>
 									  <ul class="actions">
 									    <h3 class="major">4-Packs</h3>
 											<li style="float:left"><input type="button" onClick="onLAX()" value="LAX Bro" /></li>
 											<li style="float:left"><input type="button" onClick="onVSCO()" value="VSCO Girl" /></li>
-											<li style="float:left"><input type="button" onClick="reload_signup()" value="Buy Now (0.001 BTC)" /></li>
+											<li style="float:left"><input type="button" onClick="reload_payment(0.001)" value="Buy Now (0.001 BTC)" /></li>
 										</ul>
 										</div>
 										<div>
@@ -571,7 +278,7 @@
 									    <h3 class="major">5-Packs</h3>
 											<li style="float:left"><input type="button" onClick="onBasic()" value="Basic AF" /></li>
 											<li style="float:left"><input type="button" onClick="onUVA()" value="Cartoons" /></li>
-											<li style="float:left"><input type="button" onClick="reload_signup()" value="Buy Now (0.002 BTC)" /></li>
+											<li style="float:left"><input type="button" onClick="reload_payment(0.002)" value="Buy Now (0.002 BTC)" /></li>
 										</ul>
 										</div>
 										<div class="fields">
@@ -653,6 +360,141 @@
 										</ul>
 									</form>
 								</section>
+							</article>
+
+						<!-- Store Success-->
+							<article id="store_success">
+									<h2 class="major">Shop</h2>
+									<h3>Purchase sucessful, thank you!</h3>
+								<section>
+									<div id="container">
+										<table width="100%">
+										<tr>
+											<td rowspan="3" width="60%" id="lastPrice">
+											<?php echo "1 BTC = $", number_format($lastPrice, 2); ?>
+											</td>
+											<td align="bottom" colspan="2" id="dateTime">
+											<?php echo $date; ?>
+											</td>
+										</tr>
+										</table>
+									</div>
+									<form method="post" action="#">
+									  <div>
+									  <ul class="actions">
+									    <h3 class="major">4-Packs</h3>
+											<li style="float:left"><input type="button" onClick="onLAX()" value="LAX Bro" /></li>
+											<li style="float:left"><input type="button" onClick="onVSCO()" value="VSCO Girl" /></li>
+											<li style="float:left"><input type="button" onClick="reload_payment(0.001)" value="Buy Now (0.001 BTC)" /></li>
+										</ul>
+										</div>
+										<div>
+									  <ul class="actions">
+									    <h3 class="major">5-Packs</h3>
+											<li style="float:left"><input type="button" onClick="onBasic()" value="Basic AF" /></li>
+											<li style="float:left"><input type="button" onClick="onUVA()" value="Cartoons" /></li>
+											<li style="float:left"><input type="button" onClick="reload_payment(0.002)" value="Buy Now (0.002 BTC)" /></li>
+										</ul>
+										</div>
+										<div class="fields">
+										  <div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco2" name="vsco2">
+												<label for="vsco2"><img src="images/vsco2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic1" name="basic1">
+												<label for="basic1"><img src="images/basic1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva2" name="uva2">
+												<label for="uva2"><img src="images/uva2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax3" name="lax3">
+												<label for="lax3"><img src="images/lax3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva1" name="uva1">
+												<label for="uva1"><img src="images/uva1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic2" name="basic2">
+												<label for="basic2"><img src="images/basic2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax2" name="lax2">
+												<label for="lax2"><img src="images/lax2.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva3" name="uva3">
+												<label for="uva3"><img src="images/uva3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco1" name="vsco1">
+												<label for="vsco1"><img src="images/vsco1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic3" name="basic3">
+												<label for="basic3"><img src="images/basic3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic4" name="basic4">
+												<label for="basic4"><img src="images/basic4.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva4" name="uva4">
+												<label for="uva4"><img src="images/uva4.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax4" name="lax4">
+												<label for="lax4"><img src="images/lax4.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="basic5" name="basic5">
+												<label for="basic5"><img src="images/basic5.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="lax1" name="lax1">
+												<label for="lax1"><img src="images/lax1.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco3" name="vsco3">
+												<label for="vsco3"><img src="images/vsco3.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="uva5" name="uva5">
+												<label for="uva5"><img src="images/uva5.jpg" width="150" height="150"></label>
+											</div>
+											<div class="field half">
+												<input class="sticker" type="checkbox" onclick="return false;" id="vsco4" name="vsco4">
+												<label for="vsco4"><img src="images/vsco4.jpg" width="150" height="150"></label>
+											</div>
+										</div>
+										<ul class="actions">
+											<li><input type="reset" value="Reset" /></li>
+										</ul>
+									</form>
+								</section>
+							</article>
+
+						<!-- Payment -->
+							<article id="payment">
+								<h2 class="major"> Confirm Payment</h2>
+								<h3 id="amount">N/A</h3>
+								<form action="payment-member.php" method="POST">
+										<div class="fields">
+											<div class="field">
+												<label for="name">Send Confirmation Email To</label>
+												<input type="text" name="email" id="email" />
+											</div>
+											<input type="hidden" name="amount_input" id="amount_input"/>
+											
+										</div>
+										<ul class="actions">
+											<li><input type="submit" value="Comfirm and Pay" class="primary" /></li>
+											<li><input type="reset" value="Reset"/></li>
+										</ul>
+								</form>
 							</article>
 
 						<!-- Elements -->
@@ -915,5 +757,72 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				$(document).ready(function() {
+				  $('#sub').submit(function(e) {
+				    var email = $('#email').val();
+				    var password = $('#password').val();
+						var name = $('#name').val();
+						var address = $('#address').val();
+						var city = $('#city').val();
+						var state = $('#state').val();
+						var zipcode = $('#zipcode').val();
+						var space = new RegExp("[\\s]");
+						$(".error").remove();
+						if (email.length < 1) {
+							$('#email').after('<span class="error" style="color:red">Please enter your email</span>');
+							e.preventDefault();
+						}
+						else if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+							$('#email').after('<span class="error" style="color:red">Must be of the form: *@*.*</span>');
+							e.preventDefault();
+						}
+						if (password.length < 8 && password.length > 0) {
+							$('#password').after('<span class="error" style="color:red">Must be 8 characters or more</span>');
+							e.preventDefault();
+						}
+						if (password.length < 1) {
+							$('#password').after('<span class="error" style="color:red">Please enter your password</span>');
+							e.preventDefault();
+						}
+						if(name.length < 1) {
+							$('#name').after('<span class="error" style="color:red">Please enter your name</span>');
+							e.preventDefault();
+						}
+						if (!/^[a-zA-Z\s]*$/.test(name)){
+							$('#name').after('<span class="error" style="color:red">No numbers or special characters allowed</span>');
+							e.preventDefault();
+						}
+						if(address.length < 1){
+							$('#address').after('<span class="error" style="color:red">Please enter your address</span>');
+							e.preventDefault();
+						}
+						else if (!space.test(address)){
+							$('#address').after('<span class="error" style="color:red">This is not a valid address</span>');
+							e.preventDefault();
+						}
+						if(city.length < 1) {
+							$('#city').after('<span class="error" style="color:red">Please enter your city</span>');
+							e.preventDefault();
+						}
+						else if (!/^[a-zA-Z\s]*$/.test(city)){
+							$('#city').after('<span class="error" style="color:red">No numbers or special characters allowed</span>');
+							e.preventDefault();
+						}
+						if(zipcode.length < 1) {
+							$('#zipcode').after('<span class="error" style="color:red">Please enter your zip code</span>');
+							e.preventDefault();
+						}
+						else if(!/^[0-9][0-9][0-9][0-9][0-9]$/.test(zipcode)){
+							$('#zipcode').after('<span class="error" style="color:red">Must be exactly 5 numbers</span>');
+							e.preventDefault();
+						}
+						if(state == ""){
+							$('#state').after('<span class="error" style="color:red">Please select a state</span>');
+							e.preventDefault();
+						}
+					});
+				 });
+			</script>
 	</body>
 </html>
