@@ -259,7 +259,7 @@
 											<?php echo "1 BTC = $", number_format($lastPrice, 2); ?>
 											</td>
 											<td align="bottom" colspan="2" id="dateTime">
-											<?php echo $date "(GMT)"; ?>
+											<?php echo $date; ?>
 											</td>
 										</tr>
 										</table>
@@ -374,7 +374,7 @@
 											<?php echo "1 BTC = $", number_format($lastPrice, 2); ?>
 											</td>
 											<td align="bottom" colspan="2" id="dateTime">
-											<?php echo $date "(GMT)"; ?>
+											<?php echo $date; ?>
 											</td>
 										</tr>
 										</table>
